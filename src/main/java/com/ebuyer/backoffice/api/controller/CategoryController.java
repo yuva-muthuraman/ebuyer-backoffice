@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ public class CategoryController {
 	@Autowired
 	private CategoryRepository repository;
 	
-	@RequestMapping(value="categories", method=RequestMethod.GET)
+	@RequestMapping(value="/categories", method=RequestMethod.GET)
 	public List<Category> getCategories() {
 		List<Category> categories = new ArrayList<Category>();
 		
@@ -25,5 +26,10 @@ public class CategoryController {
 		});
 		
 		return categories;
+	}
+	
+	@RequestMapping(value="/category/{id}", method=RequestMethod.GET)
+	public Category getCategory(@PathVariable Long id) {
+		return repository.findById(id).get();
 	}
 }
