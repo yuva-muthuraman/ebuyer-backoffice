@@ -8,7 +8,7 @@ import com.ebuyer.backoffice.model.enums.ProductCondition;
 
 import lombok.Data;
 
-@Entity(name="category")
+@Entity(name="product")
 @Data
 public class Product {
 	@Id
@@ -24,7 +24,7 @@ public class Product {
 	private String description;
 	
 	@Column (name="price_id")
-	private String priceId;
+	private long priceId;
 	
 	@Column (name="media_id")
 	private long mediaId;
